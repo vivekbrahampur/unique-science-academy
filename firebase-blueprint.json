@@ -1,0 +1,109 @@
+{
+  "entities": {
+    "Student": {
+      "title": "Student",
+      "description": "A student registered in the school",
+      "type": "object",
+      "properties": {
+        "name": { "type": "string" },
+        "father_name": { "type": "string" },
+        "class_name": { "type": "string" },
+        "roll_no": { "type": "string" },
+        "email": { "type": "string" },
+        "phone": { "type": "string" },
+        "dob": { "type": "string" },
+        "gender": { "type": "string" },
+        "address": { "type": "string" },
+        "createdAt": { "type": "string", "format": "date-time" }
+      },
+      "required": ["name", "father_name", "class_name", "roll_no"]
+    },
+    "Result": {
+      "title": "Result",
+      "description": "A student's exam result",
+      "type": "object",
+      "properties": {
+        "studentId": { "type": "string" },
+        "subject": { "type": "string" },
+        "marks": { "type": "number" },
+        "total_marks": { "type": "number" }
+      },
+      "required": ["studentId", "subject", "marks", "total_marks"]
+    },
+    "TestLink": {
+      "title": "TestLink",
+      "description": "A link to an online test",
+      "type": "object",
+      "properties": {
+        "class_name": { "type": "string" },
+        "subject": { "type": "string" },
+        "title": { "type": "string" },
+        "link": { "type": "string" },
+        "createdAt": { "type": "string", "format": "date-time" }
+      },
+      "required": ["class_name", "subject", "title", "link"]
+    },
+    "OnlineTestMark": {
+      "title": "OnlineTestMark",
+      "description": "Marks obtained in an online test",
+      "type": "object",
+      "properties": {
+        "studentId": { "type": "string" },
+        "test_title": { "type": "string" },
+        "score": { "type": "string" },
+        "total": { "type": "string" },
+        "date": { "type": "string", "format": "date-time" }
+      },
+      "required": ["studentId", "test_title", "score", "total"]
+    },
+    "Settings": {
+      "title": "Settings",
+      "description": "Global school settings",
+      "type": "object",
+      "properties": {
+        "logo_url": { "type": "string" },
+        "gallery_images": { "type": "array", "items": { "type": "string" } },
+        "testimonials": { "type": "array", "items": { "type": "object" } },
+        "contact_address": { "type": "string" },
+        "contact_email": { "type": "string" },
+        "contact_phone": { "type": "string" },
+        "school_name": { "type": "string" },
+        "hero_title": { "type": "string" },
+        "hero_subtitle": { "type": "string" },
+        "news_ticker": { "type": "string" },
+        "about_title": { "type": "string" },
+        "about_text": { "type": "string" },
+        "about_image": { "type": "string" },
+        "principal_name": { "type": "string" },
+        "principal_message": { "type": "string" },
+        "principal_image": { "type": "string" },
+        "smtp_host": { "type": "string" },
+        "smtp_port": { "type": "string" },
+        "smtp_user": { "type": "string" },
+        "smtp_pass": { "type": "string" }
+      }
+    }
+  },
+  "firestore": {
+    "students": {
+      "schema": "Student",
+      "description": "Collection of all students"
+    },
+    "results": {
+      "schema": "Result",
+      "description": "Collection of all exam results"
+    },
+    "test_links": {
+      "schema": "TestLink",
+      "description": "Collection of all online test links"
+    },
+    "online_test_marks": {
+      "schema": "OnlineTestMark",
+      "description": "Collection of all online test marks"
+    },
+    "settings": {
+      "schema": "Settings",
+      "description": "Global settings document (ID: global)"
+    }
+  }
+}

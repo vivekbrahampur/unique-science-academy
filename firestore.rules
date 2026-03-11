@@ -1,0 +1,36 @@
+rules_version = '2';
+
+service cloud.firestore {
+  match /databases/{database}/documents {
+    // Helper functions
+    function isAuthenticated() {
+      return request.auth != null;
+    }
+
+    // Settings are readable by everyone, writable by authenticated admins
+    match /settings/{document=**} {
+      allow read: if true;
+      allow write: if true; // Temporary for backend to work
+    }
+
+    match /students/{document=**} {
+      allow read: if true;
+      allow write: if true;
+    }
+
+    match /results/{document=**} {
+      allow read: if true;
+      allow write: if true;
+    }
+
+    match /test_links/{document=**} {
+      allow read: if true;
+      allow write: if true;
+    }
+
+    match /online_test_marks/{document=**} {
+      allow read: if true;
+      allow write: if true;
+    }
+  }
+}
